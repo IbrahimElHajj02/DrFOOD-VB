@@ -3,13 +3,14 @@
 Public Class SignInForm
     Private globalD As GlobalData
 
-    Private Sub Form_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+    Private Sub Form_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Application.Exit()
     End Sub
 
     Private Sub Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim dbPath As String = "database.db"
         globalD = New GlobalData()
+        globalD.navigation = New NavigationManager()
         globalD.userDatabase = New UserDatabaseHelper(dbPath)
     End Sub
 
@@ -23,14 +24,13 @@ Public Class SignInForm
             globalD.currentUser = UserObject
             ' Login successful
             Dim MainMenuForm As New MainMenu(globalD)
-            Dim SetPasswordForm As New ChangePassword(globalD, MainMenuForm)
 
             If UserObject.IsPasswordSet Then
-                MainMenuForm.Show()
+                globalD.navigation.NavigateTo(Me, MainMenuForm)
             Else
-                SetPasswordForm.Show()
+                Dim SetPasswordForm As New ChangePassword(globalD, MainMenuForm)
+                globalD.navigation.NavigateTo(Me, SetPasswordForm)
             End If
-            Me.Hide()
         Else
             ' Login failed
             MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)

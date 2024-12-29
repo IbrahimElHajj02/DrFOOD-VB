@@ -34,13 +34,13 @@ Partial Class SignInForm
         ' SignInMainPanel
         ' 
         SignInMainPanel.AutoSize = True
-        SignInMainPanel.BackColor = Color.FromArgb(222, 219, 193)
+        SignInMainPanel.BackColor = Color.FromArgb(CByte(222), CByte(219), CByte(193))
         SignInMainPanel.CausesValidation = False
         SignInMainPanel.ColumnCount = 4
-        SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30.0F))
-        SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20.0F))
-        SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20.0F))
-        SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30.0F))
+        SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30F))
+        SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20F))
+        SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20F))
+        SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30F))
         SignInMainPanel.Controls.Add(PasswordLabel, 1, 2)
         SignInMainPanel.Controls.Add(Password, 2, 2)
         SignInMainPanel.Controls.Add(Username, 2, 1)
@@ -50,12 +50,12 @@ Partial Class SignInForm
         SignInMainPanel.Location = New Point(0, 0)
         SignInMainPanel.Name = "SignInMainPanel"
         SignInMainPanel.RowCount = 6
-        SignInMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 25.0F))
+        SignInMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
         SignInMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 12.5F))
         SignInMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 12.5F))
         SignInMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 12.5F))
         SignInMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 12.5F))
-        SignInMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 25.0F))
+        SignInMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
         SignInMainPanel.Size = New Size(800, 450)
         SignInMainPanel.TabIndex = 0
         ' 
@@ -63,7 +63,7 @@ Partial Class SignInForm
         ' 
         PasswordLabel.Anchor = AnchorStyles.None
         PasswordLabel.AutoSize = True
-        PasswordLabel.Font = New Font("Segoe UI", 13.0F, FontStyle.Regular, GraphicsUnit.Point)
+        PasswordLabel.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
         PasswordLabel.Location = New Point(272, 183)
         PasswordLabel.Name = "PasswordLabel"
         PasswordLabel.Size = New Size(96, 25)
@@ -73,7 +73,7 @@ Partial Class SignInForm
         ' Password
         ' 
         Password.Anchor = AnchorStyles.Left Or AnchorStyles.Right
-        Password.Font = New Font("Segoe UI", 13.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Password.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
         Password.Location = New Point(403, 180)
         Password.Name = "Password"
         Password.PasswordChar = "*"c
@@ -83,7 +83,7 @@ Partial Class SignInForm
         ' Username
         ' 
         Username.Anchor = AnchorStyles.Left Or AnchorStyles.Right
-        Username.Font = New Font("Segoe UI", 13.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Username.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
         Username.Location = New Point(403, 124)
         Username.Name = "Username"
         Username.Size = New Size(154, 31)
@@ -93,7 +93,7 @@ Partial Class SignInForm
         ' 
         UsernameLabel.Anchor = AnchorStyles.None
         UsernameLabel.AutoSize = True
-        UsernameLabel.Font = New Font("Segoe UI", 13.0F, FontStyle.Regular, GraphicsUnit.Point)
+        UsernameLabel.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
         UsernameLabel.Location = New Point(270, 127)
         UsernameLabel.Name = "UsernameLabel"
         UsernameLabel.Size = New Size(100, 25)
@@ -104,7 +104,7 @@ Partial Class SignInForm
         ' 
         LoginBtn.Anchor = AnchorStyles.None
         SignInMainPanel.SetColumnSpan(LoginBtn, 2)
-        LoginBtn.Font = New Font("Segoe UI", 13.0F, FontStyle.Regular, GraphicsUnit.Point)
+        LoginBtn.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
         LoginBtn.Location = New Point(348, 235)
         LoginBtn.Name = "LoginBtn"
         LoginBtn.Size = New Size(104, 33)
@@ -112,14 +112,14 @@ Partial Class SignInForm
         LoginBtn.Text = "Log In"
         LoginBtn.UseVisualStyleBackColor = True
         ' 
-        ' Form1
+        ' SignInForm
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(SignInMainPanel)
-        Name = "Form1"
-        Text = "Form1"
+        Name = "SignInForm"
+        Text = "Dr FOOD"
         SignInMainPanel.ResumeLayout(False)
         SignInMainPanel.PerformLayout()
         ResumeLayout(False)

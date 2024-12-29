@@ -22,33 +22,75 @@ Partial Class MainMenu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Label1 = New Label()
+        MainMenuMainPanel = New TableLayoutPanel()
+        WelcomeLabel = New Label()
+        ManageUsersBtn = New Button()
+        MainMenuMainPanel.SuspendLayout()
         SuspendLayout()
         ' 
-        ' Label1
+        ' MainMenuMainPanel
         ' 
-        Label1.AutoSize = True
-        Label1.Dock = DockStyle.Fill
-        Label1.Font = New Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point)
-        Label1.Location = New Point(0, 0)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(208, 54)
-        Label1.TabIndex = 0
-        Label1.Text = "WELCOME"
-        Label1.TextAlign = ContentAlignment.MiddleCenter
+        MainMenuMainPanel.AutoSize = True
+        MainMenuMainPanel.BackColor = Color.FromArgb(CByte(222), CByte(219), CByte(193))
+        MainMenuMainPanel.CausesValidation = False
+        MainMenuMainPanel.ColumnCount = 3
+        MainMenuMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 29.8507442F))
+        MainMenuMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 40.29851F))
+        MainMenuMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 29.8507481F))
+        MainMenuMainPanel.Controls.Add(WelcomeLabel, 1, 0)
+        MainMenuMainPanel.Controls.Add(ManageUsersBtn, 1, 3)
+        MainMenuMainPanel.Dock = DockStyle.Fill
+        MainMenuMainPanel.Location = New Point(0, 0)
+        MainMenuMainPanel.Name = "MainMenuMainPanel"
+        MainMenuMainPanel.RowCount = 6
+        MainMenuMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 25.0F))
+        MainMenuMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 12.5F))
+        MainMenuMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 12.5F))
+        MainMenuMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 12.5F))
+        MainMenuMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 12.5F))
+        MainMenuMainPanel.RowStyles.Add(New RowStyle(SizeType.Percent, 25.0F))
+        MainMenuMainPanel.Size = New Size(800, 450)
+        MainMenuMainPanel.TabIndex = 1
+        ' 
+        ' WelcomeLabel
+        ' 
+        WelcomeLabel.Anchor = AnchorStyles.None
+        WelcomeLabel.AutoSize = True
+        WelcomeLabel.Font = New Font("Segoe UI", 18.0F, FontStyle.Regular, GraphicsUnit.Point)
+        WelcomeLabel.Location = New Point(274, 40)
+        WelcomeLabel.Name = "WelcomeLabel"
+        WelcomeLabel.Size = New Size(250, 32)
+        WelcomeLabel.TabIndex = 1
+        WelcomeLabel.Text = "Welcome: placeholder"
+        ' 
+        ' ManageUsersBtn
+        ' 
+        ManageUsersBtn.Dock = DockStyle.Fill
+        ManageUsersBtn.Font = New Font("Segoe UI", 13.0F, FontStyle.Regular, GraphicsUnit.Point)
+        ManageUsersBtn.Location = New Point(248, 234)
+        ManageUsersBtn.Margin = New Padding(10)
+        ManageUsersBtn.Name = "ManageUsersBtn"
+        ManageUsersBtn.Size = New Size(302, 36)
+        ManageUsersBtn.TabIndex = 5
+        ManageUsersBtn.Text = "Manage Users"
+        ManageUsersBtn.UseVisualStyleBackColor = True
         ' 
         ' MainMenu
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(222), CByte(219), CByte(193))
         ClientSize = New Size(800, 450)
-        Controls.Add(Label1)
+        Controls.Add(MainMenuMainPanel)
         Name = "MainMenu"
         Text = "MainMenu"
+        MainMenuMainPanel.ResumeLayout(False)
+        MainMenuMainPanel.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents Label1 As Label
+    Friend WithEvents MainMenuMainPanel As TableLayoutPanel
+    Friend WithEvents WelcomeLabel As Label
+    Friend WithEvents ManageUsersBtn As Button
 End Class

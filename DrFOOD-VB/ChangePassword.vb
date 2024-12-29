@@ -20,8 +20,7 @@ Public Class ChangePassword
 
         If password = again Then
             golbalData.userDatabase.UpdatePassword(golbalData.currentUser, password)
-            Me.Hide()
-            nextForm.Show()
+            golbalData.navigation.NavigateTo(Me, nextForm)
         Else
             MessageBox.Show("Two Fields do not match", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
