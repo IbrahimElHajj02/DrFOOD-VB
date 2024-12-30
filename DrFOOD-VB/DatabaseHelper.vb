@@ -23,8 +23,7 @@ Public Class DatabaseHelper
                         Username TEXT NOT NULL UNIQUE,
                         Password TEXT,
                         IsPasswordSet INTEGER NOT NULL DEFAULT 0,
-                        IsSupervisor INTEGER NOT NULL DEFAULT 0,
-                        IsOwner INTEGER NOT NULL DEFAULT 0,
+                        Role TEXT,
                         Sales REAL NOT NULL DEFAULT 0.0
                     );"
                 Using cmd As New SQLiteCommand(createTableQuery, connection)

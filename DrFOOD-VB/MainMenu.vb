@@ -6,7 +6,7 @@
         InitializeComponent()
         WelcomeLabel.Text = "Welcome: " + globalData.currentUser.Username
 
-        If Not globalData.currentUser.IsOwner Then
+        If Not (globalData.currentUser.Role = UserRoles.Owner) Then
             ManageUsersBtn.Hide()
         End If
 

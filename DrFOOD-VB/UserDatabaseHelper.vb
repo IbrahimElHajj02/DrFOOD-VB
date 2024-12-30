@@ -18,7 +18,10 @@ Public Class UserDatabaseHelper
             Using cmd As New SQLiteCommand(query, connection)
                 Dim scalar = cmd.ExecuteScalar()
                 If scalar Is Nothing Then
-                    AddUser("Owner", True, True, 0.0)
+                    Dim OwnerAccount = New User()
+                    OwnerAccount.Username = "Owner"
+                    OwnerAccount.Role = UserRoles.Owner
+                    AddUser(OwnerAccount)
                 End If
             End Using
         End Using
@@ -35,18 +38,17 @@ Public Class UserDatabaseHelper
     End Function
 
     ' Insert a new user into the database
-    Public Function AddUser(username As String, IsSupervisor As Boolean, isOwner As Boolean, sales As Double) As Boolean
+    Public Function AddUser(user As User) As Boolean
         Try
             Using connection As New SQLiteConnection(MyBase.connectionString)
                 connection.Open()
                 Dim query As String = "
-                    INSERT INTO Users (Username, IsSupervisor, IsOwner, Sales) 
-                    VALUES (@username, @IsSupervisor, @isOwner, @sales)"
+                    INSERT INTO Users (Username, Role, Sales) 
+                    VALUES (@username, @Role, @sales)"
                 Using cmd As New SQLiteCommand(query, connection)
-                    cmd.Parameters.AddWithValue("@username", username)
-                    cmd.Parameters.AddWithValue("@IsSupervisor", If(IsSupervisor, 1, 0))
-                    cmd.Parameters.AddWithValue("@isOwner", If(isOwner, 1, 0))
-                    cmd.Parameters.AddWithValue("@sales", sales)
+                    cmd.Parameters.AddWithValue("@username", user.Username)
+                    cmd.Parameters.AddWithValue("@Role", user.Role)
+                    cmd.Parameters.AddWithValue("@sales", user.Sales)
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
@@ -77,8 +79,7 @@ Public Class UserDatabaseHelper
                             .ID = reader.GetInt32(reader.GetOrdinal("ID")),
                             .Username = reader.GetString(reader.GetOrdinal("Username")),
                             .IsPasswordSet = reader.GetInt32(reader.GetOrdinal("IsPasswordSet")) = 1,
-                            .IsSupervisor = reader.GetInt32(reader.GetOrdinal("IsSupervisor")) = 1,
-                            .IsOwner = reader.GetInt32(reader.GetOrdinal("IsOwner")) = 1,
+                            .Role = reader.GetString(reader.GetOrdinal("Role")),
                             .Sales = reader.GetDouble(reader.GetOrdinal("Sales"))
                         }
                         End If
@@ -120,8 +121,7 @@ Public Class UserDatabaseHelper
                 WHERE Id = @Id"
             Using command As New SQLiteCommand(query, connection)
                 command.Parameters.AddWithValue("@Username", user.Username)
-                command.Parameters.AddWithValue("@IsSupervisor", user.IsSupervisor)
-                command.Parameters.AddWithValue("@IsOwner", user.IsOwner)
+                command.Parameters.AddWithValue("@Role", user.Role)
                 command.Parameters.AddWithValue("@Sales", user.Sales)
                 command.Parameters.AddWithValue("@Id", user.ID)
                 command.ExecuteNonQuery()
