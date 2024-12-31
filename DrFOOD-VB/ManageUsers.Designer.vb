@@ -24,6 +24,7 @@ Partial Class ManageUsers
     Private Sub InitializeComponent()
         ManageUsersMainPanel = New TableLayoutPanel()
         BackBtn = New Button()
+        AddUserBtn = New Button()
         ManageUsersMainPanel.SuspendLayout()
         SuspendLayout()
         ' 
@@ -38,6 +39,7 @@ Partial Class ManageUsers
         ManageUsersMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20F))
         ManageUsersMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 30F))
         ManageUsersMainPanel.Controls.Add(BackBtn, 0, 0)
+        ManageUsersMainPanel.Controls.Add(AddUserBtn, 3, 0)
         ManageUsersMainPanel.Dock = DockStyle.Fill
         ManageUsersMainPanel.Location = New Point(0, 0)
         ManageUsersMainPanel.Name = "ManageUsersMainPanel"
@@ -61,6 +63,17 @@ Partial Class ManageUsers
         BackBtn.Text = "Back"
         BackBtn.UseVisualStyleBackColor = True
         ' 
+        ' AddUserBtn
+        ' 
+        AddUserBtn.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        AddUserBtn.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
+        AddUserBtn.Location = New Point(631, 3)
+        AddUserBtn.Name = "AddUserBtn"
+        AddUserBtn.Size = New Size(166, 33)
+        AddUserBtn.TabIndex = 5
+        AddUserBtn.Text = "Add New User"
+        AddUserBtn.UseVisualStyleBackColor = True
+        ' 
         ' ManageUsers
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -77,4 +90,5 @@ Partial Class ManageUsers
 
     Friend WithEvents ManageUsersMainPanel As TableLayoutPanel
     Friend WithEvents BackBtn As Button
+    Friend WithEvents AddUserBtn As Button
 End Class

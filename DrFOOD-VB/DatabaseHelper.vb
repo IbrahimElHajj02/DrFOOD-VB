@@ -31,6 +31,14 @@ Public Class DatabaseHelper
                 End Using
 
                 ' Insert default user (Owner)
+                Dim query As String = "
+                    INSERT INTO Users (Username, Role) 
+                    VALUES (@username, @Role)"
+                Using cmd As New SQLiteCommand(query, connection)
+                    cmd.Parameters.AddWithValue("@username", "Owner")
+                    cmd.Parameters.AddWithValue("@Role", UserRoles.Owner)
+                    cmd.ExecuteNonQuery()
+                End Using
             End Using
         End If
     End Sub
