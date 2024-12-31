@@ -95,6 +95,41 @@ Public Class UserDatabaseHelper
         End If
     End Sub
 
+    Public Function GetAllUsers() As List(Of User)
+        Dim users As New List(Of User)()
+        Try
+            ' Open database connection
+            Using conn As New SQLiteConnection(connectionString)
+                conn.Open()
+
+                ' SQL query to select all users
+                Dim query As String = "SELECT ID, Username, IsPasswordSet, Role, Sales FROM Users"
+
+                Using cmd As New SQLiteCommand(query, conn)
+                    Using reader As SQLiteDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            ' Create a new User object for each record
+                            Dim user As New User With {
+                            .ID = reader.GetInt32(reader.GetOrdinal("ID")),
+                            .Username = reader.GetString(reader.GetOrdinal("Username")),
+                            .IsPasswordSet = reader.GetBoolean(reader.GetOrdinal("IsPasswordSet")),
+                            .Role = reader.GetString(reader.GetOrdinal("Role")),
+                            .Sales = reader.GetDouble(reader.GetOrdinal("Sales"))
+                        }
+                            ' Add user to the list
+                            users.Add(user)
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            ' Handle exceptions (optional: log or show error message)
+            MessageBox.Show($"Error loading users: {ex.Message}")
+        End Try
+
+        Return users
+    End Function
+
     ' Update a user's password
     Public Sub UpdatePassword(user As User, newPassword As String)
         Using connection As New SQLiteConnection(connectionString)

@@ -50,17 +50,17 @@ Partial Class UserInfo
         SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 13.6051445F))
         SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 13.6051445F))
         SignInMainPanel.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20.408329F))
-        SignInMainPanel.Controls.Add(PasswordLabel, 1, 2)
         SignInMainPanel.Controls.Add(UsernameLabel, 1, 1)
         SignInMainPanel.Controls.Add(BackBtn, 0, 0)
         SignInMainPanel.Controls.Add(Username, 2, 1)
-        SignInMainPanel.Controls.Add(PasswordBtn, 2, 2)
         SignInMainPanel.Controls.Add(SaveBtn, 1, 4)
-        SignInMainPanel.Controls.Add(RoleLabel, 1, 3)
-        SignInMainPanel.Controls.Add(RoleSelector, 2, 3)
         SignInMainPanel.Controls.Add(SalesLabel, 4, 1)
         SignInMainPanel.Controls.Add(SalesAmount, 5, 1)
         SignInMainPanel.Controls.Add(SaleDetailsButton, 4, 2)
+        SignInMainPanel.Controls.Add(RoleLabel, 1, 2)
+        SignInMainPanel.Controls.Add(RoleSelector, 2, 2)
+        SignInMainPanel.Controls.Add(PasswordLabel, 1, 3)
+        SignInMainPanel.Controls.Add(PasswordBtn, 2, 3)
         SignInMainPanel.Dock = DockStyle.Fill
         SignInMainPanel.Location = New Point(0, 0)
         SignInMainPanel.Name = "SignInMainPanel"
@@ -79,7 +79,7 @@ Partial Class UserInfo
         PasswordLabel.Anchor = AnchorStyles.None
         PasswordLabel.AutoSize = True
         PasswordLabel.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
-        PasswordLabel.Location = New Point(169, 183)
+        PasswordLabel.Location = New Point(169, 239)
         PasswordLabel.Name = "PasswordLabel"
         PasswordLabel.Size = New Size(96, 25)
         PasswordLabel.TabIndex = 1
@@ -119,7 +119,7 @@ Partial Class UserInfo
         ' 
         PasswordBtn.Anchor = AnchorStyles.None
         PasswordBtn.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
-        PasswordBtn.Location = New Point(274, 179)
+        PasswordBtn.Location = New Point(274, 235)
         PasswordBtn.Name = "PasswordBtn"
         PasswordBtn.Size = New Size(102, 33)
         PasswordBtn.TabIndex = 7
@@ -143,7 +143,7 @@ Partial Class UserInfo
         RoleLabel.Anchor = AnchorStyles.None
         RoleLabel.AutoSize = True
         RoleLabel.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
-        RoleLabel.Location = New Point(189, 239)
+        RoleLabel.Location = New Point(189, 183)
         RoleLabel.Name = "RoleLabel"
         RoleLabel.Size = New Size(55, 25)
         RoleLabel.TabIndex = 8
@@ -154,7 +154,7 @@ Partial Class UserInfo
         RoleSelector.Anchor = AnchorStyles.Left Or AnchorStyles.Right
         RoleSelector.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
         RoleSelector.FormattingEnabled = True
-        RoleSelector.Location = New Point(274, 235)
+        RoleSelector.Location = New Point(274, 180)
         RoleSelector.Name = "RoleSelector"
         RoleSelector.Size = New Size(102, 31)
         RoleSelector.TabIndex = 9

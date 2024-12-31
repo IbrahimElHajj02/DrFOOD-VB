@@ -11,7 +11,7 @@ Public Class UserInfo
         globalData = golbalD
         inspectedUser = insUser
         isReadOnly = Not (globalData.currentUser.Role = UserRoles.Owner) And
-            globalData.currentUser IsNot inspectedUser
+            Not globalData.currentUser.ID = inspectedUser.ID
         isInsertMode = (globalData.currentUser.Role = UserRoles.Owner) And
             inspectedUser.Username Is Nothing
         InitializeComponent()
@@ -35,7 +35,7 @@ Public Class UserInfo
         Else
             RoleSelector.SelectedIndex = 0
         End If
-        SalesAmount.Text = inspectedUser.Sales.ToString()
+        SalesAmount.Text = inspectedUser.Sales.ToString("C", globalData.lbpFormat)
 
 
         If Not (globalData.currentUser.Role = UserRoles.Owner) Or
