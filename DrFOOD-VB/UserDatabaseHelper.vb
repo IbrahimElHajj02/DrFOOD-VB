@@ -52,6 +52,10 @@ Public Class UserDatabaseHelper
 
                 Using reader As SQLiteDataReader = cmd.ExecuteReader()
                     If reader.Read() Then
+                        If reader.GetString(reader.GetOrdinal("Role")) = UserRoles.Deleted Then
+                            Return Nothing 'don't allow sign in to deleted users
+                        End If
+
                         Dim savedPassword = If(reader.IsDBNull(reader.GetOrdinal("Password")),
                             String.Empty,
                             reader.GetString(reader.GetOrdinal("Password"))
@@ -95,7 +99,7 @@ Public Class UserDatabaseHelper
         End If
     End Sub
 
-    Public Function GetAllUsers() As List(Of User)
+    Public Function GetAllUsers(onlyActive As Boolean) As List(Of User)
         Dim users As New List(Of User)()
         Try
             ' Open database connection
@@ -104,7 +108,11 @@ Public Class UserDatabaseHelper
 
                 ' SQL query to select all users
                 Dim query As String = "SELECT ID, Username, IsPasswordSet, Role, Sales FROM Users"
-
+                If onlyActive Then
+                    query &= $" WHERE Role <> '{UserRoles.Deleted}'"
+                Else
+                    query &= $" WHERE Role = '{UserRoles.Deleted}'"
+                End If
                 Using cmd As New SQLiteCommand(query, conn)
                     Using reader As SQLiteDataReader = cmd.ExecuteReader()
                         While reader.Read()

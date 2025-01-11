@@ -19,7 +19,7 @@
     End Sub
 
     Private Sub ManageUsersBtn_Click(sender As Object, e As EventArgs) Handles ManageUsersBtn.Click
-        Dim manageUsers = New ManageUsers(globalData)
+        Dim manageUsers = New ManageUsers(globalData, False)
         globalData.navigation.NavigateTo(Me, manageUsers)
     End Sub
 

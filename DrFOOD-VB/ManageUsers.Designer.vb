@@ -34,6 +34,7 @@ Partial Class ManageUsers
         Sales = New DataGridViewTextBoxColumn()
         Edit = New DataGridViewButtonColumn()
         Delete = New DataGridViewButtonColumn()
+        DeletedUsersBtn = New Button()
         ManageUsersMainPanel.SuspendLayout()
         CType(UserDataView, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -51,6 +52,7 @@ Partial Class ManageUsers
         ManageUsersMainPanel.Controls.Add(BackBtn, 0, 0)
         ManageUsersMainPanel.Controls.Add(AddUserBtn, 3, 0)
         ManageUsersMainPanel.Controls.Add(UserDataView, 1, 1)
+        ManageUsersMainPanel.Controls.Add(DeletedUsersBtn, 1, 5)
         ManageUsersMainPanel.Dock = DockStyle.Fill
         ManageUsersMainPanel.Location = New Point(0, 0)
         ManageUsersMainPanel.Name = "ManageUsersMainPanel"
@@ -162,6 +164,16 @@ Partial Class ManageUsers
         Delete.Text = "Delete"
         Delete.Width = 50
         ' 
+        ' DeletedUsersBtn
+        ' 
+        DeletedUsersBtn.Font = New Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point)
+        DeletedUsersBtn.Location = New Point(173, 364)
+        DeletedUsersBtn.Name = "DeletedUsersBtn"
+        DeletedUsersBtn.Size = New Size(165, 33)
+        DeletedUsersBtn.TabIndex = 7
+        DeletedUsersBtn.Text = "Deleted Users"
+        DeletedUsersBtn.UseVisualStyleBackColor = True
+        ' 
         ' ManageUsers
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -186,4 +198,5 @@ Partial Class ManageUsers
     Friend WithEvents Sales As DataGridViewTextBoxColumn
     Friend WithEvents Edit As DataGridViewButtonColumn
     Friend WithEvents Delete As DataGridViewButtonColumn
+    Friend WithEvents DeletedUsersBtn As Button
 End Class

@@ -11,4 +11,5 @@ Module UserRoles
     Public Const Owner As String = "owner"
     Public Const Supervisor As String = "supervisor"
     Public Const Cashier As String = "cashier"
+    Public Const Deleted As String = "deleted"
 End Module

@@ -5,13 +5,17 @@ Public Class UserInfo
     Private inspectedUser As User
     Private isReadOnly As Boolean
     Private isInsertMode As Boolean
+    Private isDeleted As Boolean
 
     Public Sub New(golbalD As GlobalData, insUser As User, nextF As Form)
         nextForm = nextF
         globalData = golbalD
         inspectedUser = insUser
-        isReadOnly = Not (globalData.currentUser.Role = UserRoles.Owner) And
-            Not globalData.currentUser.ID = inspectedUser.ID
+        isDeleted = inspectedUser.Role = UserRoles.Deleted
+
+        isReadOnly = (Not (globalData.currentUser.Role = UserRoles.Owner) And
+            Not globalData.currentUser.ID = inspectedUser.ID) Or isDeleted
+
         isInsertMode = (globalData.currentUser.Role = UserRoles.Owner) And
             inspectedUser.Username Is Nothing
         InitializeComponent()
@@ -22,9 +26,13 @@ Public Class UserInfo
     End Sub
     Private Sub Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Add items to the ComboBox
-        RoleSelector.Items.Add(UserRoles.Cashier)
-        RoleSelector.Items.Add(UserRoles.Supervisor)
-        RoleSelector.Items.Add(UserRoles.Owner)
+        If Not isDeleted Then
+            RoleSelector.Items.Add(UserRoles.Cashier)
+            RoleSelector.Items.Add(UserRoles.Supervisor)
+            RoleSelector.Items.Add(UserRoles.Owner)
+        Else
+            RoleSelector.Items.Add(UserRoles.Deleted)
+        End If
 
         If inspectedUser.Username IsNot Nothing Then
             Username.Text = inspectedUser.Username
@@ -94,4 +102,5 @@ Public Class UserInfo
             End If
         End If
     End Sub
+
 End Class
